@@ -1,0 +1,38 @@
+STORAGE = local
+
+COMPILATION:
+	- Run the "make" command inside the project folder.
+
+
+INVOCATION:
+	./comp [filename]:
+
+	./comp - Invokes program and user is prompted for input.
+                                Keyboard simulated EOF terminates input.
+	./comp < filename - Invokes program and input is read via stdin file redirection.
+                                filename must be precise including extension (if any).
+	./comp filename - Invokes program and input is read directly from file.
+                                filename should not include implicit extension (.fs18)
+
+       - Run "make clean" to remove "comp" executable
+
+       - Run "make realclean" to remove all executable, .fs18 and .asm files
+
+
+BNF:
+	<program>  -> 	void <vars> <block>
+	<block>    ->	begin <vars> <stats> end
+	<vars>     -> 	empty | let Identifier = Integer <vars> 
+	<expr>     -> 	<A> / <expr> | <A> * <expr> | <A>
+	<A>        -> 	<M> + <A> | <M> - <A> | <M>
+	<M>        -> 	- <M> |  <R>
+	<R>        ->   ( <expr> ) | Identifier | Integer
+	<stats>    ->   <stat>  <mStat>
+	<mStat>    ->   empty |  <stat>  <mStat>
+	<stat>     ->   <in> | <out> | <block> | <if> | <loop> | <assign>
+	<in>       ->   read ( Identifier ) : 
+	<out>      ->   print ( <expr>  ) :
+	<if>       -> 	cond ( <expr> <RO> <expr> ) <stat>
+	<loop>     ->   iter ( <expr> <RO> <expr> ) <stat>
+	<assign>   ->   Identifier  = <expr> : 
+	<RO>       ->   < | <  = | >  | >  = | =  =  |   = 

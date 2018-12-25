@@ -1,0 +1,13 @@
+void
+let x = 1 
+let y = 1
+begin
+  let z = 1
+  begin
+    let w = 1
+    let a = 1
+    let w = 1
+      read ( w ) :
+  end
+print ( x + y + z + w ) :
+end
