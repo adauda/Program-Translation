@@ -1,9 +1,0 @@
-void
-let x = 1 
-let y = 1
-begin
-  let z = 1
-  begin
-    print ( x + y + z ) :
-  end
-end
